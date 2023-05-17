@@ -16,8 +16,8 @@ def messages(path):
             str: Each extracted str_message that meets the criteria.
     """
 
-    with open(path, 'rb') as f:
-        for line in f:
+    with open(path, 'rb') as file:
+        for line in file:
             line_str = line.decode('iso-8859-1').strip()
             str_message = ""
             for ch in line_str:
@@ -26,10 +26,15 @@ def messages(path):
                 elif str_message.__len__() >= 5 and str_message.endswith('!'):
                     yield str_message
                     str_message = ""
-        f.close()
+        file.close()
 
 
-path = input("Enter the path of the picture\n")
-ret = messages(path)
-for message in ret:
-    print(message)
+def main():
+    path = input("Enter the path of the picture\n")
+    ret = messages(path)
+    for message in ret:
+        print(message)
+
+
+if __name__ == "__main__":
+    main()

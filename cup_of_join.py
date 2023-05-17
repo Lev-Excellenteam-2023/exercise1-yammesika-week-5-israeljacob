@@ -17,17 +17,15 @@ def join(*lists, sep="-"):
 
     new_list = []
 
-    for list1 in lists:
-        for organ in list1:
-            if type(organ) == list:
-                new_list.append(join(organ, sep))
-            else:
-                new_list.append(organ)
-
-        new_list.append(sep)
+    new_list = [organ if type(organ) != list else join(organ, sep) for list_1 in lists for organ in list_1 + [sep]]
 
     new_list.pop()
     return new_list
 
 
-print(join([1]))
+def main():
+    print(join([1, 2, 3], ['a', 'b', 'c']))
+
+
+if __name__ == "__main__":
+    main()
