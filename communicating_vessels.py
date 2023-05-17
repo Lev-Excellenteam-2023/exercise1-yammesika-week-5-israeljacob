@@ -1,16 +1,26 @@
 def interleave(*organs):
-    # Create an empty list to store the interleaved elements
+    """
+        Interleaves the elements from multiple sequences.
+
+        Args:
+            *organs: Variable number of sequences to interleave.
+
+        Returns:
+            list: A new list containing interleaved elements from all sequences.
+
+        Example:
+            interleave([1, 2, 3], ['a', 'b', 'c']) returns [1, 'a', 2, 'b', 3, 'c'].
+    """
     my_list = []
-    # Find the length of the longest argument
     max_organ = 0
+
     for organ in organs:
         if len(organ) > max_organ:
             max_organ = len(organ)
-    # Loop through each index from 0 to max_organ
+
     for i in range(0, max_organ):
-        # Loop through each argument and append the i-th element to my_list
         for organ in organs:
-            # Check if i is within the range of valid indexes for the current argument
             if i <= len(organ) + 1:
                 my_list.append(organ[i])
+
     return my_list
