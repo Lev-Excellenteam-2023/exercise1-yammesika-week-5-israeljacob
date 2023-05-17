@@ -15,8 +15,7 @@ def interleave(*organs):
     max_organ = 0
 
     for organ in organs:
-        if len(organ) > max_organ:
-            max_organ = len(organ)
+        max_organ = max(max_organ, len(organ))
 
     for i in range(0, max_organ):
         for organ in organs:
